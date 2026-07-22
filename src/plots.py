@@ -81,7 +81,7 @@ def plot_predictions(
     cols: int = 3,
     conf: float = 0.25,
 ) -> plt.Figure:
-    """Odpala inferencję modelu na podanych obrazkach i rysuje wykryte obiekty.
+    """Odpala inferencję modelu na podanych obrazkach
 
     Parameters
     ----------
@@ -98,7 +98,7 @@ def plot_predictions(
 
     results = model.predict(image_paths, conf=conf, verbose=False)
     for ax, result in zip(axes, results):
-        annotated = result.plot()[..., ::-1]  # BGR -> RGB
+        annotated = result.plot()[..., ::-1]
         ax.imshow(annotated)
         ax.set_title(Path(result.path).name, fontsize=9)
         ax.axis("off")
